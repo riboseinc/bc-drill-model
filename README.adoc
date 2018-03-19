@@ -1,0 +1,4 @@
+= BC Drill Model
+
+This repo contains the model definition for drills and drill reports in the 
+context of business continuity (BC), in the format of a UML diagram.
