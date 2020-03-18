@@ -103,9 +103,8 @@ BusinessActivity::
 ActivityCategory::
 * contains a list of *BusinessActivities*.
 
---------
 
-New model according to ISO 22301, 22313 and 22398:
+## New model according to ISO 22301, 22313 and 22398
 
 [source,yaml]
 ----
