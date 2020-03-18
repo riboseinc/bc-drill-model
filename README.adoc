@@ -102,3 +102,118 @@ BusinessActivity::
 
 ActivityCategory::
 * contains a list of *BusinessActivities*.
+
+--------
+
+New model according to ISO 22301, 22313 and 22398:
+
+[source,yaml]
+----
+plan:
+
+  # purpose and scope
+  purpose_scope: [ text ]
+  
+  # objectives and measures of success in terms of prioritized activities;
+  objectives: [ text ]
+  
+  # who can invoke this plan
+  authority: [ contact ]
+
+  # when to invoke this plan
+  invocation_criteria: [ text ]
+  
+  # how to invoke this plan
+  procedure_invocation: [ procedure ]
+  
+  # when to stop this plan 
+  standdown_criteria: [ text ] 
+  
+  # how to stop this plan
+  procedure_standdown: [ procedure ]
+
+  # procedures within the plan
+  # "information flow and documentation processes" should
+  # be documented within procedures
+  procedures: [ procedure ]
+  
+  # contact information of relevant parties
+  contact_information: [ contact ]
+  
+  # communication requirements and procedures
+  communication: [ text ]
+  
+  # (non-resource) internal and external interdependencies and interactions
+  # if any
+  # (resource dependencies are stated within "procedures")
+  dependencies: [ text ]
+  
+
+# Each procedure contains:
+# - roles, responsibilities and authorities
+procedure:
+  - resource_needs: [ (resource_category, text) ]
+
+    # resource_category:
+    # - people
+    # - information and data
+    # - buildings, work environment and associated utilities
+    # - facilities, equipment and consumables
+    # - information and communication technology (ICT) systems
+    # - transportation
+    # - finance
+    # - partners and suppliers
+
+  - roles:
+    - name: text
+      responsibilities: [ text ]
+
+  - description: [ text ]
+
+exercise:
+  objectives: [ text ]
+  method: exercise_method
+  scenario: [ scenario ]
+  plans: [ plans ]
+  schedule: time_range
+
+# e.g. every 100 days
+time_range:
+
+exercise_result:
+  exercise: exercise
+  results: [ exercise_procedure_results ]
+
+exercise_procedure_result:
+
+  # reference to procedure
+  procedure: procedure 
+
+  # result of exercise on a procedure
+  result_type: result_type
+  
+  # what happened when exercising the procedure
+  records: [ text ]
+  
+  # more evidence of what happened
+  # e.g. an image
+  supporting_evidence: 
+  
+  # if the step failed what can we do better next time
+  corrective_action: [ text ]
+      
+# e.g. Volcano eruption, flight traffic control down
+scenario: text
+
+exercise_method:
+- discussion_seminar
+- discussion_workshop
+- discussion_tabletop
+- discussion_game
+- operational_simulation
+
+result_type:
+- skipped
+- success
+- failed
+----
